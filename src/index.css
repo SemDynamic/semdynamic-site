@@ -1,0 +1,151 @@
+@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Sora:wght@500;600;700;800&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --font-display: "Sora", "Segoe UI", sans-serif;
+  --font-sans: "Manrope", "Segoe UI", sans-serif;
+  --color-ink: #0a1628;
+  --color-cloud: #f3f8ff;
+  --color-slate-soft: #6d7b93;
+  --color-cyan: #00aef3;
+  --color-teal: #00b894;
+  --color-sun: #ff7a1f;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--font-sans);
+  background: #f3f8ff;
+  color: #0a1628;
+}
+
+section {
+  scroll-margin-top: 90px;
+}
+
+.site-backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  background:
+    radial-gradient(700px 400px at 12% 4%, rgba(0, 174, 243, 0.13), transparent 72%),
+    radial-gradient(640px 420px at 90% 11%, rgba(255, 122, 31, 0.12), transparent 72%),
+    radial-gradient(640px 420px at 50% 90%, rgba(0, 184, 148, 0.1), transparent 72%),
+    linear-gradient(180deg, #f9fbff 0%, #eff6ff 100%);
+}
+
+.glass-panel {
+  background: rgba(255, 255, 255, 0.72);
+  backdrop-filter: blur(16px);
+  border: 1px solid rgba(10, 22, 40, 0.08);
+  box-shadow: 0 24px 60px rgba(10, 22, 40, 0.1);
+}
+
+.kicker {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  border-radius: 999px;
+  border: 1px solid rgba(10, 22, 40, 0.1);
+  background: rgba(255, 255, 255, 0.85);
+  padding: 7px 12px;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #355070;
+}
+
+.title-gradient {
+  background: linear-gradient(120deg, #0089cf, #00b894, #ff7a1f);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.dot-grid {
+  background-image:
+    radial-gradient(circle at center, rgba(10, 22, 40, 0.14) 1px, transparent 1px);
+  background-size: 26px 26px;
+}
+
+@keyframes drift {
+  0%, 100% {
+    transform: translateY(0) translateX(0);
+  }
+  50% {
+    transform: translateY(-20px) translateX(10px);
+  }
+}
+
+@keyframes pulse-soft {
+  0%, 100% {
+    opacity: 0.55;
+  }
+  50% {
+    opacity: 0.9;
+  }
+}
+
+@keyframes marquee {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+.animate-drift {
+  animation: drift 8s ease-in-out infinite;
+}
+
+.animate-pulse-soft {
+  animation: pulse-soft 4s ease-in-out infinite;
+}
+
+.animate-marquee {
+  animation: marquee 24s linear infinite;
+}
+
+.hover-lift {
+  transition: transform 260ms ease, box-shadow 260ms ease, border-color 260ms ease;
+}
+
+.hover-lift:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 24px 58px rgba(10, 22, 40, 0.14);
+  border-color: rgba(0, 174, 243, 0.35);
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: #e8eef8;
+}
+
+::-webkit-scrollbar-thumb {
+  border-radius: 999px;
+  background: linear-gradient(180deg, #00aef3, #00b894);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(180deg, #0899d3, #06a583);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-drift,
+  .animate-marquee,
+  .animate-pulse-soft {
+    animation: none !important;
+  }
+
+  * {
+    scroll-behavior: auto !important;
+  }
+}
